@@ -27,7 +27,6 @@ app.use(express.json())
 app.get('/', (req, res) => {
     db.collection('todos').find().toArray()
         .then(data => {
-            console.log(data)
             res.render('index.ejs', { items: data });
         })
         .catch(error => console.error(error))
