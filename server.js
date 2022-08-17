@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 app.post('/addTodo', (req, res) => {
     db.collection('todos').insertOne({thing: req.body.todoItem, completed: false})
         .then(result => {
-            console.log('Todo added (log)');
+            console.log('Todo added');
             res.redirect('/');
         })
         .catch(err => console.error(err));
@@ -44,8 +44,8 @@ app.post('/addTodo', (req, res) => {
 app.delete('/deleteItem', (req, res) => {
     db.collection('todos').deleteOne({thing: req.body.itemFromJS})
         .then(result => {
-            console.log('Todo deleted (log)');
-            res.json('Todo deleted (json response)');
+            console.log('Todo deleted');
+            res.json('Todo deleted');
         })
         .catch(err => console.error(err));
 })
