@@ -32,7 +32,14 @@ app.get('/', (req, res) => {
         .catch(error => console.error(error))
 })
 
-
+app.delete('/deleteItem', (req, res) => {
+    db.collection('todos').deleteOne({thing: req.body.itemFromJS})
+        .then(result => {
+            console.log('Todo deleted (log)');
+            res.json('Todo deleted (json response)');
+        })
+        .catch(err => console.error(err));
+})
 
 app.listen(process.env.PORT || PORT, ()=>{
     console.log(`Server running on port ${PORT}`)
