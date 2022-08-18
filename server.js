@@ -64,6 +64,19 @@ app.put('/markComplete', (req, res) => {
         .catch(err => console.error(err));
 })
 
+app.put('/markUnComplete', (req, res) => {
+    db.collection('todos').updateOne({thing: req.body.itemFromJS},
+        { $set: { completed: false }},
+        {
+            sort: {_id: -1 },
+            upsert: false
+        })
+        .then(result => {
+            console.log('Todo marked unCcomplete');
+            res.json('Todo marked unComplete');
+        })
+        .catch(err => console.error(err));
+})
 
 app.listen(process.env.PORT || PORT, ()=>{
     console.log(`Server running on port ${PORT}`)
