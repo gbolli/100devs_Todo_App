@@ -50,6 +50,21 @@ app.delete('/deleteItem', (req, res) => {
         .catch(err => console.error(err));
 })
 
+app.put('/markComplete', (req, res) => {
+    db.collection('todos').updateOne({thing: req.body.itemFromJS},
+        { $set: { completed: true }},
+        {
+            sort: {_id: -1 },
+            upsert: false
+        })
+        .then(result => {
+            console.log('Todo marked complete');
+            res.json('Todo marked complete');
+        })
+        .catch(err => console.error(err));
+})
+
+
 app.listen(process.env.PORT || PORT, ()=>{
     console.log(`Server running on port ${PORT}`)
 })
