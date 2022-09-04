@@ -85,3 +85,9 @@ app.put('/markUnComplete', (req, res) => {
 app.listen(process.env.PORT || PORT, ()=>{
     console.log(`Server running on port ${PORT}`)
 })
+
+
+// TODO:  move .env file to config folder
+// TODO:  set up mongoose for DB and models
+// TODO:  create todos controller
+// TODO:  add authentication
