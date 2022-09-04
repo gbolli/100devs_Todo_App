@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
+const connectDB = require('./config/database')
 
 const mainRoutes = require('./routes/main')
 
@@ -9,16 +10,18 @@ require('dotenv').config({ path: './config/.env' });
 
 const PORT = process.env.PORT;
 
-// Mongo DB setup
-let db,
-    db_connectionString = process.env.DB_STRING,
-    db_name = 'todo';
+connectDB()
 
-MongoClient.connect(db_connectionString, { useUnifiedTopology: true })
-    .then(client => {
-        console.log(`Connected to ${db_name} database`);
-        db = client.db(db_name);
-    })
+// Mongo DB setup
+// let db,
+//     db_connectionString = process.env.DB_STRING,
+//     db_name = 'todo';
+
+// MongoClient.connect(db_connectionString, { useUnifiedTopology: true })
+//     .then(client => {
+//         console.log(`Connected to ${db_name} database`);
+//         db = client.db(db_name);
+//     })
 
 // Set & Use
 app.set('view engine', 'ejs')
