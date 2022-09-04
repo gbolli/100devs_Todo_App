@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
 
+const mainRoutes = require('./routes/main')
+
 const PORT = 3000;
 require('dotenv').config();
 
@@ -24,13 +26,15 @@ app.use(express.json())
 
 // Routes
 
-app.get('/', (req, res) => {
-    db.collection('todos').find().toArray()
-        .then(data => {
-            res.render('index.ejs', { items: data });
-        })
-        .catch(error => console.error(error))
-})
+app.use('/', mainRoutes)
+
+// app.get('/', (req, res) => {
+//     db.collection('todos').find().toArray()
+//         .then(data => {
+//             res.render('index.ejs', { items: data });
+//         })
+//         .catch(error => console.error(error))
+// })
 
 app.post('/addTodo', (req, res) => {
     db.collection('todos').insertOne({thing: req.body.todoItem, completed: false})
