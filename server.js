@@ -4,8 +4,10 @@ const MongoClient = require('mongodb').MongoClient;
 
 const mainRoutes = require('./routes/main')
 
-const PORT = 3000;
-require('dotenv').config();
+
+require('dotenv').config({ path: './config/.env' });
+
+const PORT = process.env.PORT;
 
 // Mongo DB setup
 let db,
@@ -87,7 +89,6 @@ app.listen(process.env.PORT || PORT, ()=>{
 })
 
 
-// TODO:  move .env file to config folder
 // TODO:  set up mongoose for DB and models
 // TODO:  create todos controller
 // TODO:  add authentication
