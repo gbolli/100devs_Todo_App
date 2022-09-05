@@ -10,5 +10,17 @@ module.exports = {
             console.error(error)
         }
         
+    },
+    createTodo: async (req, res) => {
+        try {
+            await Todo.create({
+                todo: req.body.todoItem,
+                completed: false
+            })
+            console.log('Todo added');
+            res.redirect('/todos');
+        } catch (error) {
+            console.error(error)
+        }
     }
 }
