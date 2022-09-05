@@ -4,6 +4,7 @@ const MongoClient = require('mongodb').MongoClient;
 const connectDB = require('./config/database')
 
 const mainRoutes = require('./routes/main')
+const todoRoutes = require('./routes/todos')
 
 
 require('dotenv').config({ path: './config/.env' });
@@ -32,14 +33,7 @@ app.use(express.json())
 // Routes
 
 app.use('/', mainRoutes)
-
-// app.get('/', (req, res) => {
-//     db.collection('todos').find().toArray()
-//         .then(data => {
-//             res.render('index.ejs', { items: data });
-//         })
-//         .catch(error => console.error(error))
-// })
+app.use('/todos', todoRoutes)
 
 app.post('/addTodo', (req, res) => {
     db.collection('todos').insertOne({thing: req.body.todoItem, completed: false})
@@ -91,7 +85,5 @@ app.listen(process.env.PORT || PORT, ()=>{
     console.log(`Server running on port ${PORT}`)
 })
 
-
-// TODO:  set up mongoose for DB and models
 // TODO:  create todos controller
 // TODO:  add authentication
