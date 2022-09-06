@@ -49,7 +49,7 @@ module.exports = {
     },
     deleteItem: async (req, res) => {
         try {
-            await Todo.findOneAndDelete({ todo: req.body.itemFromJS })
+            await Todo.findOneAndDelete({ _id: req.body.itemIdFromJS })
             console.log(`Item Deleted`)
             res.json(`Item Deleted`)
         } catch (error) {
