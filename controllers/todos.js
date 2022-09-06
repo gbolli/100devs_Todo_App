@@ -26,7 +26,7 @@ module.exports = {
     markComplete: async (req, res) => {
         try {
             await Todo.findOneAndUpdate(
-                { todo: req.body.itemFromJS },
+                { _id: req.body.itemIdFromJS },
                 { completed: true }
             )
             console.log(`Item marked complete`)
