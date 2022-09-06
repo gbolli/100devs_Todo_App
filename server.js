@@ -1,15 +1,10 @@
 const express = require('express');
 const app = express();
-const MongoClient = require('mongodb').MongoClient;
 const connectDB = require('./config/database')
-
 const mainRoutes = require('./routes/main')
 const todoRoutes = require('./routes/todos')
 
-
 require('dotenv').config({ path: './config/.env' });
-
-const PORT = process.env.PORT;
 
 connectDB()
 
@@ -25,8 +20,8 @@ app.use('/', mainRoutes)
 app.use('/todos', todoRoutes)
 
 
-app.listen(process.env.PORT || PORT, ()=>{
-    console.log(`Server running on port ${PORT}`)
+app.listen(process.env.PORT, ()=>{
+    console.log(`Server running on port ${process.env.PORT}`)
 })
 
 // TODO:  add authentication
