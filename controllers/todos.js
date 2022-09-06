@@ -4,8 +4,8 @@ module.exports = {
     getTodos: async (req, res) => {
         try {
             const items = await Todo.find()
-            // TODO: count completed
-            res.render('todos', { items })
+            const remaining = await Todo.countDocuments({ completed: false})
+            res.render('todos', { items, remaining })
         } catch (error) {
             console.error(error)
         }
