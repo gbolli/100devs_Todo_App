@@ -53,14 +53,14 @@ async function markComplete() {
 }
 
 async function markIncomplete() {
-    const itemText = this.parentNode.childNodes[1].innerText;
+    const itemId = this.parentNode.dataset.id
 
     try {
         const response = await fetch('todos/markIncomplete', {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                'itemFromJS': itemText
+                'itemIdFromJS': itemId
             })
         })
         const data = await response.json();

@@ -38,7 +38,7 @@ module.exports = {
     markIncomplete: async (req, res) => {
         try {
             await Todo.findOneAndUpdate(
-                { todo: req.body.itemFromJS },
+                { _id: req.body.itemIdFromJS },
                 { completed: false }
             )
             console.log(`Item marked incomplete`)
