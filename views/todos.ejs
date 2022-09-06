@@ -11,16 +11,12 @@
 <body>
     <h1>Todo List</h1>
         <ul class="todoItems">
-            <% for (let i = 0; i < items.length; i++) { %>
+            <% items.forEach(e => { %>
                 <li class="item">
-                    <% if (items[i].completed) { %>
-                        <span class="completed"><%= items[i].todo %></span> 
-                    <% } else { %> 
-                        <span class="incomplete"><%= items[i].todo %></span>
-                    <% } %>
+                    <span class='<%= e.completed === true ? "completed" : "incomplete" %>'><%= e.todo %></span>
                     <span class="fa fa-trash"></span> 
                 </li>
-            <% } %> 
+            <% }) %> 
         </ul>
 
     <h2>Add A Todo:</h2>
