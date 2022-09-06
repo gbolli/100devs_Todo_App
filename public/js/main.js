@@ -11,14 +11,14 @@ Array.from(items).forEach((e) => {
 })
 
 Array.from(itemsCompleted).forEach((e) => {
-    e.addEventListener('click', markUnComplete);
+    e.addEventListener('click', markIncomplete);
 })
 
 async function deleteItem() {
     const itemText = this.parentNode.childNodes[1].innerText;  // 2 spans in li - need to go up to li, then down to first span(1)
 
     try {
-        const response = await fetch('deleteItem', {
+        const response = await fetch('todos/deleteItem', {
             method: 'delete',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -37,7 +37,7 @@ async function markComplete() {
     const itemText = this.parentNode.childNodes[1].innerText;
 
     try {
-        const response = await fetch('markComplete', {
+        const response = await fetch('todos/markComplete', {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -52,11 +52,11 @@ async function markComplete() {
     }
 }
 
-async function markUnComplete() {
+async function markIncomplete() {
     const itemText = this.parentNode.childNodes[1].innerText;
 
     try {
-        const response = await fetch('markUnComplete', {
+        const response = await fetch('todos/markIncomplete', {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
