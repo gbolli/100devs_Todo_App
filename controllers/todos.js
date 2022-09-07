@@ -9,7 +9,6 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
-        
     },
     createTodo: async (req, res) => {
         try {
@@ -17,8 +16,8 @@ module.exports = {
                 todo: req.body.todoItem,
                 completed: false
             })
-            console.log('Todo added');
-            res.redirect('/todos');
+            console.log('Todo added')
+            res.redirect('/todos')
         } catch (error) {
             console.error(error)
         }

@@ -1,17 +1,17 @@
-const deleteBtn = document.querySelectorAll('.fa-trash');
-const items = document.querySelectorAll('.item span.incomplete');
-const itemsCompleted = document.querySelectorAll('.item span.completed');
+const deleteBtn = document.querySelectorAll('.fa-trash')
+const items = document.querySelectorAll('.item span.incomplete')
+const itemsCompleted = document.querySelectorAll('.item span.completed')
 
 Array.from(deleteBtn).forEach((e) => {
-    e.addEventListener('click', deleteItem);
+    e.addEventListener('click', deleteItem)
 })
 
 Array.from(items).forEach((e) => {
-    e.addEventListener('click', markComplete);
+    e.addEventListener('click', markComplete)
 })
 
 Array.from(itemsCompleted).forEach((e) => {
-    e.addEventListener('click', markIncomplete);
+    e.addEventListener('click', markIncomplete)
 })
 
 async function deleteItem() {
@@ -25,11 +25,11 @@ async function deleteItem() {
                 'itemIdFromJS': itemId
             })
         })
-        const data = await response.json();
-        console.log(data);
-        location.reload();
+        const data = await response.json()
+        console.log(data)
+        location.reload()
     } catch (err) {
-        console.log(err);
+        console.log(err)
     }
 }
 
@@ -44,11 +44,11 @@ async function markComplete() {
                 'itemIdFromJS': itemId
             })
         })
-        const data = await response.json();
-        console.log(data);
-        location.reload();
+        const data = await response.json()
+        console.log(data)
+        location.reload()
     } catch (err) {
-        console.error(err);
+        console.error(err)
     }
 }
 
@@ -63,10 +63,10 @@ async function markIncomplete() {
                 'itemIdFromJS': itemId
             })
         })
-        const data = await response.json();
-        console.log(data);
-        location.reload();
+        const data = await response.json()
+        console.log(data)
+        location.reload()
     } catch (err) {
-        console.error(err);
+        console.error(err)
     }
 }
